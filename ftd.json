@@ -1,0 +1,703 @@
+{
+  "version": "0.1.0",
+  "name": "ftd",
+  "instructions": [
+    {
+      "name": "initialize",
+      "accounts": [
+        {
+          "name": "sysInfo",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "epochInfo",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "dividendData",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "payer",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "rent",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "increaseSysInfo",
+      "accounts": [
+        {
+          "name": "sysInfo",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "payer",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "len",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "increaseEpochInfo",
+      "accounts": [
+        {
+          "name": "epochInfo",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "payer",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "len",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "increaseDividendData",
+      "accounts": [
+        {
+          "name": "dividendData",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "payer",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "len",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "feedInviterData",
+      "accounts": [
+        {
+          "name": "inviterInfo",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "payer",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "invitor",
+          "type": "publicKey"
+        }
+      ]
+    },
+    {
+      "name": "feedDividendData",
+      "accounts": [
+        {
+          "name": "dividendData",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "payer",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "start",
+          "type": "u64"
+        },
+        {
+          "name": "end",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "activeNextEpoch",
+      "accounts": [
+        {
+          "name": "sysInfo",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "epochInfo",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "previousEpochInfo",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "recentSlothashes",
+          "isMut": false,
+          "isSigner": false,
+          "docs": [
+            "SlotHashes sysvar cluster data."
+          ]
+        },
+        {
+          "name": "payer",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "rent",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "claim",
+      "accounts": [
+        {
+          "name": "sysInfo",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "userSummary",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "epochInfo",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "userEpochInfo",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "dividendData",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "inviterInfo",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "payer",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "rent",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "mintftd",
+      "accounts": [
+        {
+          "name": "sysInfo",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "epochInfo",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "userEpochInfo",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "userSummary",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "inviterInfo",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "recentSlothashes",
+          "isMut": false,
+          "isSigner": false,
+          "docs": [
+            "SlotHashes sysvar cluster data."
+          ]
+        },
+        {
+          "name": "payer",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "rent",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "instructions",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "mintNft",
+      "accounts": [
+        {
+          "name": "metadata",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "masterEdition",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "mint",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "collectionMint",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "collectionInfo",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "collectionEdition",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "tokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "payer",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "authorityPda",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "rent",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "associatedTokenProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "tokenMetadataProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "metadataTitle",
+          "type": "string"
+        },
+        {
+          "name": "metadataSymbol",
+          "type": "string"
+        },
+        {
+          "name": "metadataUri",
+          "type": "string"
+        }
+      ]
+    }
+  ],
+  "accounts": [
+    {
+      "name": "SysInfo",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "totalJoinNumber",
+            "type": "u64"
+          },
+          {
+            "name": "totalDividendNumber",
+            "type": "u64"
+          },
+          {
+            "name": "adminAddr",
+            "type": "publicKey"
+          },
+          {
+            "name": "liqAmount",
+            "type": "u64"
+          },
+          {
+            "name": "prizeAmount",
+            "type": "u64"
+          },
+          {
+            "name": "teamAmount",
+            "type": "u64"
+          },
+          {
+            "name": "dividendAmount",
+            "type": "u64"
+          },
+          {
+            "name": "failureIncome",
+            "type": "u64"
+          },
+          {
+            "name": "currentEpoch",
+            "type": "u64"
+          },
+          {
+            "name": "currentBlock",
+            "type": "u64"
+          },
+          {
+            "name": "joinNumber",
+            "type": "u64"
+          },
+          {
+            "name": "joinPubkey",
+            "type": {
+              "array": [
+                "publicKey",
+                3000
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "EpochInfo",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "joinNumber",
+            "type": "u64"
+          },
+          {
+            "name": "dividendNumber",
+            "type": "u64"
+          },
+          {
+            "name": "epochId",
+            "type": "u64"
+          },
+          {
+            "name": "rewardTimes",
+            "type": "u64"
+          },
+          {
+            "name": "rewardBlock",
+            "type": {
+              "array": [
+                "u64",
+                500
+              ]
+            }
+          },
+          {
+            "name": "rewardPubkey",
+            "type": {
+              "array": [
+                "publicKey",
+                500
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "UserEpochInfo",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "userAddr",
+            "type": "publicKey"
+          },
+          {
+            "name": "hasClaim",
+            "type": "u64"
+          },
+          {
+            "name": "epochId",
+            "type": "u64"
+          },
+          {
+            "name": "lastBlock",
+            "type": "u64"
+          },
+          {
+            "name": "joinTimes",
+            "type": "u64"
+          },
+          {
+            "name": "joinBlock",
+            "type": {
+              "array": [
+                "u64",
+                500
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "UserSummary",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "invitedFrom",
+            "type": "publicKey"
+          },
+          {
+            "name": "totalDividendTimes",
+            "type": "u64"
+          },
+          {
+            "name": "totalDividendAmount",
+            "type": "u64"
+          },
+          {
+            "name": "totalRefundAmount",
+            "type": "u64"
+          },
+          {
+            "name": "initEpochId",
+            "type": "u64"
+          },
+          {
+            "name": "lastJoinEpochId",
+            "type": "u64"
+          },
+          {
+            "name": "totalJoinEpochTimes",
+            "type": "u64"
+          },
+          {
+            "name": "totalJoinTimes",
+            "type": "u64"
+          },
+          {
+            "name": "unclaimedEpochsLen",
+            "type": "u64"
+          },
+          {
+            "name": "unclaimedEpochs",
+            "type": {
+              "array": [
+                "u64",
+                100
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "InviterInfo",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "userAddr",
+            "type": "publicKey"
+          },
+          {
+            "name": "mintTimes",
+            "type": "u64"
+          },
+          {
+            "name": "dividendTimes",
+            "type": "u64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "DividendData",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "data",
+            "type": {
+              "array": [
+                {
+                  "array": [
+                    "u32",
+                    501
+                  ]
+                },
+                501
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "events": [
+    {
+      "name": "ClaimedEvent",
+      "fields": [
+        {
+          "name": "epochId",
+          "type": "u64",
+          "index": false
+        },
+        {
+          "name": "dividendAmount",
+          "type": "u64",
+          "index": false
+        },
+        {
+          "name": "refundAmount",
+          "type": "u64",
+          "index": false
+        }
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": 6000,
+      "name": "OnlyOneTimeError",
+      "msg": "Only One Time"
+    },
+    {
+      "code": 6001,
+      "name": "Limit",
+      "msg": "Access Limit"
+    },
+    {
+      "code": 6002,
+      "name": "ClaimEpochIdError",
+      "msg": "Claim EpochId Error"
+    },
+    {
+      "code": 6003,
+      "name": "InviterError",
+      "msg": "Inviter Error"
+    }
+  ],
+  "metadata": {
+    "address": ""
+  }
+}
