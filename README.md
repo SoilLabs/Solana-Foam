@@ -2,19 +2,26 @@
 Foam mint and claim script
 
 ## How to run the script
+1. install Node.js(v18+):
+        
+        download and install nodejs https://nodejs.org/download/release/v18.19.0/
 
-1. Change directory to the folders:
+2. download script:
 
-        cd Solana-Foam
+        download script from https://codeload.github.com/SoilLabs/Solana-Foam/zip/refs/heads/main
 
-2. Install the dependencies
+3. unzip script and change directory to the folders:
+
+        cd Solana-Foam-main
+
+4. Install the dependencies
 
         npm install
 
-3. Fill in your information in the index.mjs
+5. Fill in your information in the index.mjs
 
         edit index.mjs and input your information
         
-4. Run the sample:
+6. Run the script:
 
         node index.mjs

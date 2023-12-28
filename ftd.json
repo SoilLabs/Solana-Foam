@@ -39,6 +39,43 @@
       "args": []
     },
     {
+      "name": "empty",
+      "accounts": [
+        {
+          "name": "payer",
+          "isMut": true,
+          "isSigner": true
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "forTest",
+      "accounts": [
+        {
+          "name": "sysInfo",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "payer",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "rent",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": []
+    },
+    {
       "name": "increaseSysInfo",
       "accounts": [
         {
@@ -60,6 +97,10 @@
       "args": [
         {
           "name": "len",
+          "type": "u64"
+        },
+        {
+          "name": "epochId",
           "type": "u64"
         }
       ]
@@ -86,6 +127,10 @@
       "args": [
         {
           "name": "len",
+          "type": "u64"
+        },
+        {
+          "name": "epochId",
           "type": "u64"
         }
       ]
@@ -268,6 +313,37 @@
       "args": []
     },
     {
+      "name": "withdraw",
+      "accounts": [
+        {
+          "name": "pda",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "payer",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "rent",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "total",
+          "type": "u64"
+        }
+      ]
+    },
+    {
       "name": "mintftd",
       "accounts": [
         {
@@ -325,95 +401,6 @@
         }
       ],
       "args": []
-    },
-    {
-      "name": "mintNft",
-      "accounts": [
-        {
-          "name": "metadata",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "masterEdition",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "mint",
-          "isMut": true,
-          "isSigner": true
-        },
-        {
-          "name": "collectionMint",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "collectionInfo",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "collectionEdition",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "tokenAccount",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "payer",
-          "isMut": true,
-          "isSigner": true
-        },
-        {
-          "name": "authorityPda",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "rent",
-          "isMut": false,
-          "isSigner": false
-        },
-        {
-          "name": "systemProgram",
-          "isMut": false,
-          "isSigner": false
-        },
-        {
-          "name": "tokenProgram",
-          "isMut": false,
-          "isSigner": false
-        },
-        {
-          "name": "associatedTokenProgram",
-          "isMut": false,
-          "isSigner": false
-        },
-        {
-          "name": "tokenMetadataProgram",
-          "isMut": false,
-          "isSigner": false
-        }
-      ],
-      "args": [
-        {
-          "name": "metadataTitle",
-          "type": "string"
-        },
-        {
-          "name": "metadataSymbol",
-          "type": "string"
-        },
-        {
-          "name": "metadataUri",
-          "type": "string"
-        }
-      ]
     }
   ],
   "accounts": [
@@ -422,6 +409,26 @@
       "type": {
         "kind": "struct",
         "fields": [
+          {
+            "name": "isExtremeMode",
+            "type": "u64"
+          },
+          {
+            "name": "extremeModeStartTime",
+            "type": "u64"
+          },
+          {
+            "name": "extremeModeEndTime",
+            "type": "u64"
+          },
+          {
+            "name": "extremeModeEnterSlot",
+            "type": "u64"
+          },
+          {
+            "name": "sysStartSlot",
+            "type": "u64"
+          },
           {
             "name": "totalJoinNumber",
             "type": "u64"
@@ -530,6 +537,14 @@
             "type": "publicKey"
           },
           {
+            "name": "leftNft",
+            "type": "u64"
+          },
+          {
+            "name": "nftClaimedIndex",
+            "type": "u64"
+          },
+          {
             "name": "hasClaim",
             "type": "u64"
           },
@@ -603,7 +618,7 @@
             "type": {
               "array": [
                 "u64",
-                100
+                10
               ]
             }
           }
@@ -671,6 +686,11 @@
           "name": "refundAmount",
           "type": "u64",
           "index": false
+        },
+        {
+          "name": "dividendTimes",
+          "type": "u64",
+          "index": false
         }
       ]
     }
@@ -695,9 +715,14 @@
       "code": 6003,
       "name": "InviterError",
       "msg": "Inviter Error"
+    },
+    {
+      "code": 6004,
+      "name": "EndError",
+      "msg": ">150 slot Error"
     }
   ],
   "metadata": {
-    "address": ""
+    "address": "BFEtYvLqoWfj15xwapzoN62xHedP4AS718v36RCj9vKe"
   }
 }

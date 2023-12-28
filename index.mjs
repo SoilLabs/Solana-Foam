@@ -5,17 +5,19 @@ import Ftd from "./ftd.json" assert { type: "json" };
 //----------------------------------------------------
 //input your solana private key
 const privateKey = '';
-//input your inviter's solana address
-const inviterAddress = '11111111111111111111111111111111';
 //the times you want to mint
-let times = 1000;
+let times = 10000;
 //interval second
-const sleepSecond = 3;
+const sleepSecond = 2;
+
+//input your inviter's solana address
+//if not, keep the default
+const inviterAddress = '11111111111111111111111111111112';
+
 //Solana endpoint
 const endpoint = 'https://api.mainnet-beta.solana.com';
-
-const slotsPerEpoch = 500;
 //----------------------------------------------------
+const slotsPerEpoch = 500;
 
 const getProvider = () => {
   const connection = new anchor.web3.Connection(endpoint, 'processed');
@@ -65,13 +67,14 @@ const getReward = async () => {
     }).preInstructions([anchor.web3.ComputeBudgetProgram.setComputeUnitLimit({ units: 1400000, })]).rpc()
     console.log('getReward tx: ', tx)
   } catch (e) {
-    console.log('getReward error:', e.message)
+    console.log('No reward or waiting for the next epoch claim.')
   }
 }
+
 await getReward()
 while (times-- > 0) {
   try {
-    if (times % 10 == 0) await getReward()
+    if (times % 5 == 0) await getReward()
     const slot = await program.provider.connection.getSlot();
     const epochInfoAddr = (anchor.web3.PublicKey.findProgramAddressSync([anchor.utils.bytes.utf8.encode("EpochInfo"), anchor.utils.bytes.utf8.encode(new BN(slot).div(new BN(slotsPerEpoch)).toString())], program.programId))[0]
     const userEpochInfoAddr = (anchor.web3.PublicKey.findProgramAddressSync([anchor.utils.bytes.utf8.encode("UserEpochInfo"), anchor.utils.bytes.utf8.encode(new BN(slot).div(new BN(slotsPerEpoch)).toString()), program.provider.wallet.publicKey.toBuffer()], program.programId))[0]
