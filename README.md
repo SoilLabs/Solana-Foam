@@ -1,6 +1,31 @@
 # Solana-Foam
 Foam mint and claim script
 
+## Rage Mode Data
+Dune.com query sql 
+```
+select
+      block_time,
+      block_slot,
+      tx_index,
+      outer_executing_account,
+      executing_account,
+      data,
+      tx_signer,
+      tx_success,
+      log_messages,
+      0.000005 as fee,
+      tx_id
+    from
+      solana.instruction_calls
+    where
+      block_slot >= 238651704
+      and executing_account = 'BFEtYvLqoWfj15xwapzoN62xHedP4AS718v36RCj9vKe'
+      and data = 0x5e6670ef835f211d
+      and tx_success = true
+      order by block_slot asc ,tx_index asc
+```
+
 ## Lottery code
 ```
 //step to next block
