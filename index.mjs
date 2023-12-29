@@ -31,8 +31,18 @@ const getProvider = () => {
 const sleep = () => {
   return new Promise((resolve) => setTimeout(resolve, sleepSecond * 1000));
 }
+const provider = getProvider();
+// if the provider returns valid provider then the Ftd.metadata.address will not gives empty
 
-const program = new anchor.Program(Ftd, Ftd.metadata.address, getProvider());
+const program = new anchor.Program(Ftd, Ftd.metadata.address, provider);
+// const program = new anchor.Program(Ftd, Ftd.metadata.address, getProvider());
+
+// in case of above code is also shown an empty then try this below code
+/* 
+const metadata = Ftd();
+const program = new anchor.Program(Ftd, metadata.address, getProvider()); 
+*/
+
 
 const sysInfoAddr = (anchor.web3.PublicKey.findProgramAddressSync([anchor.utils.bytes.utf8.encode("SysInfo"),], program.programId))[0]
 const userSummaryAddr = (anchor.web3.PublicKey.findProgramAddressSync([anchor.utils.bytes.utf8.encode("UserSummary"), program.provider.wallet.publicKey.toBuffer()], program.programId))[0]
