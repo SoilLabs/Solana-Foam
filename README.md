@@ -2,6 +2,10 @@
 Foam mint and claim script
 
 ## Rage Mode Data
+Winning numbers (arithmetic sequence mechanism):
+
+      1809 2469 3129 3789 4449 5109 5769 6429 7089 7749 8409 9069 9729 10389 11049 11709 12369 13029 13689 14349
+
 Dune.com query sql 
 ```
 select
