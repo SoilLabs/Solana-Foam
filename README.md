@@ -1,6 +1,9 @@
 # Solana-Foam
 Foam mint and claim script
 
+## 1-99980 winners data
+    https://github.com/SoilLabs/Solana-Foam/blob/main/foam_data.xls
+
 ## Rage Mode Data
 Winning numbers (arithmetic sequence mechanism):
 
